@@ -13,8 +13,11 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    flag = False
     if message.author == client.user:
         return
+    if 'help' in message.content.lower():
+        await message.channel.send(f"Send me 'set_timer in ! hours ! minutes' to set timer\nI will remind you :)")
     if "set_timer" in message.content.lower():
         hours = int(message.content.lower().split()[2])
         minutes = int(message.content.lower().split()[4])
